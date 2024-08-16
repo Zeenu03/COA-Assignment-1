@@ -43,93 +43,24 @@ long long calculate_elapsed_time_ns(timespec start, timespec end) {
 
 int main() {
   
-    
+        struct timespec start, end;
+        vector<int> sizes = {64, 128, 256, 512, 1024};
+        for(int N : sizes){
+          clock_gettime(CLOCK_MONOTONIC, &start);
+          auto A = generate_matrix(N);
+          auto B = generate_matrix(N);
 
-        // Generate two NxN matrices
-        auto A = generate_matrix(1024);
-        auto B = generate_matrix(1024);
+          auto result = matrix_multiply(A, B);
 
-        // Measure time taken for multiplication
-        timespec start, end;
-        clock_gettime(CLOCK_MONOTONIC, &start);
+          clock_gettime(CLOCK_MONOTONIC, &end);
 
-        auto result = matrix_multiply(A, B);
+          long long elapsed_time_ns = calculate_elapsed_time_ns(start, end);
+          long double elapsed_time_s = elapsed_time_ns / 1e9;
 
-        clock_gettime(CLOCK_MONOTONIC, &end);
-
-        // Calculate elapsed time
-        long long elapsed_time_ns = calculate_elapsed_time_ns(start, end);
-        long double elapsed_time_s = elapsed_time_ns / 1e9;
-
-        // Print results
-        // cout << "Size " << 1024 << "x" << 1024 << ":" << endl;
-        // cout << "  Time taken = " << elapsed_time_ns << " nanoseconds" << endl;
-        cout <<elapsed_time_s<< endl;
-        // cout << endl;
+          cout << "Size " << N << "x" << N << ":" << endl;
+          cout << "  Time taken = " << elapsed_time_ns << " nanoseconds" << endl;
+          cout << endl;
    
-
+    }
     return 0;
 }
-/*
-Size 64x64:
-  Time taken = 3479460 nanoseconds
-  Time taken = 0.00347946 seconds
-
-Size 128x128:
-  Time taken = 27893698 nanoseconds
-  Time taken = 0.0278937 seconds
-
-Size 256x256:
-  Time taken = 248471434 nanoseconds
-  Time taken = 0.248471 seconds
-
-Size 512x512:
-  Time taken = 2538954512 nanoseconds
-  Time taken = 2.53895 seconds
-
-Size 1024x1024:
-  Time taken = 22380539108 nanoseconds
-  Time taken = 22.3805 seconds
-
-
-Size 64x64:
-  Time taken = 3488710 nanoseconds
-  Time taken = 0.00348871 seconds
-
-Size 128x128:
-  Time taken = 32668488 nanoseconds
-  Time taken = 0.0326685 seconds
-
-Size 256x256:
-  Time taken = 304887671 nanoseconds
-  Time taken = 0.304888 seconds
-
-Size 512x512:
-  Time taken = 3313693244 nanoseconds
-  Time taken = 3.31369 seconds
-
-Size 1024x1024:
-  Time taken = 21567400369 nanoseconds
-  Time taken = 21.5674 seconds
-
-Size 64x64:
-  Time taken = 3712570 nanoseconds
-  Time taken = 0.00371257 seconds
-
-Size 128x128:
-  Time taken = 27597928 nanoseconds
-  Time taken = 0.0275979 seconds
-
-Size 256x256:
-  Time taken = 229279646 nanoseconds
-  Time taken = 0.22928 seconds
-
-Size 512x512:
-  Time taken = 2165607926 nanoseconds
-  Time taken = 2.16561 seconds
-
-Size 1024x1024:
-  Time taken = 18317831911 nanoseconds
-  Time taken = 18.3178 seconds
-
-*/

@@ -63,7 +63,9 @@ int main() {
               << elapsed_time_ns << " nanoseconds." << std::endl;
     //Loop
     clock_gettime(CLOCK_MONOTONIC, &start);
-    fibonacci_loop(n);
+    for(int i = 1; i <=50; i++){
+        fibonacci_loop(i);
+    }
     clock_gettime(CLOCK_MONOTONIC, &end);
     elapsed_time_ns = (end.tv_sec - start.tv_sec) * 1e9 + (end.tv_nsec - start.tv_nsec);
     elapsed_time_s = elapsed_time_ns / 1e9;
@@ -71,8 +73,9 @@ int main() {
               << elapsed_time_ns << " nanoseconds." << std::endl;
 
     // Recursion with Memoization
-    std::vector<long long> dp(n + 1, -1);
+    
     clock_gettime(CLOCK_MONOTONIC, &start);
+    std::vector<long long> dp(n + 1, -1);
     fibonacci_memoization(n, dp);
     clock_gettime(CLOCK_MONOTONIC, &end);
     elapsed_time_ns = (end.tv_sec - start.tv_sec) * 1e9 + (end.tv_nsec - start.tv_nsec);

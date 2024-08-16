@@ -23,113 +23,37 @@ def generate_matrix_double(N):
     
 
 # List of sizes to iterate through
-#sizes = [64, 128, 256, 512, 1024]
+sizes = [64,128,256,512,1024]
+for size in sizes:
+  start_time = time.process_time()  
+  n = size
+  A = generate_matrix(n)
+  B = generate_matrix(n)
+  result = [[0]*n for i in range(n)]
 
+  matrix_multiply(A, B,result)
+  end_time = time.process_time()  
 
+  # Calculate elapsed time
+  elapsed_time_s = end_time - start_time 
+  #Print results
+  print(f"Size {1024}x{1024}:")
+  print(f"  Time taken = {elapsed_time_s:.9f} seconds")
+  print()
 
+for size in sizes:
+  start_time = time.process_time()  
+  n = size
+  A = generate_matrix_double(n)
+  B = generate_matrix_double(n)
+  result = [[0]*n for i in range(n)]
 
+  matrix_multiply(A, B,result)
+  end_time = time.process_time()  
 
-#for N in sizes:
-    # Generate two NxN matrices
-n = 1024
-A = generate_matrix_double(n)
-B = generate_matrix_double(n)
-result = [[0]*n for i in range(n)]
-# Measure time taken for multiplication
-start_time = time.process_time()  
-matrix_multiply(A, B,result)
-end_time = time.process_time()  
-
-# Calculate elapsed time
-elapsed_time_s = end_time - start_time 
-print(elapsed_time_s)
-# Print results
-# print(f"Size {1024}x{1024}:")
-# print(f"  Time taken = {elapsed_time_s:.9f} seconds")
-# print()
-
-# for N in sizes:
-#     # Generate two NxN matrices
-#     A = generate_matrix_double(N)
-#     B = generate_matrix_double(N)
-    
-#     # Measure time taken for multiplication
-#     start_time = time.process_time()  
-#     result = matrix_multiply(A, B)
-#     end_time = time.process_time()  
-    
-#     # Calculate elapsed time
-#     elapsed_time_s = end_time - start_time
-    
-#     # Print results
-#     print(f"Size {N}x{N}:")
-#     print(f"  Time taken = {elapsed_time_s:.11f} seconds")
-#     print()
-
-'''
-Integer:
-Size 64x64:
-  Time taken = 0.015625000 seconds
-
-Size 128x128:
-  Time taken = 0.078125000 seconds
-
-Size 256x256:
-  Time taken = 0.750000000 seconds
-
-Size 512x512:
-  Time taken = 6.484375000 seconds
-
-Size 1024x1024:
-  Time taken = 52.828125000 seconds
-
-Size 64x64:
-  Time taken = 0.000000000 seconds
-
-Size 128x128:
-  Time taken = 0.046875000 seconds
-
-Size 256x256:
-  Time taken = 0.515625000 seconds
-
-Size 512x512:
-  Time taken = 7.062500000 seconds
-
-Size 1024x1024:
-  Time taken = 49.546875000 seconds
-  
-Size 64x64:
-  Time taken = 0.000000000 seconds
-
-Size 128x128:
-  Time taken = 0.062500000 seconds
-
-Size 256x256:
-  Time taken = 0.406250000 seconds
-
-Size 512x512:
-  Time taken = 5.609375000 seconds
-
-Size 1024x1024:
-  Time taken = 62.671875000 seconds
-'''
-
-'''
-Floating Point:
-Size 64x64:
-  Time taken = 0.01562500000 seconds
-
-Size 128x128:
-  Time taken = 0.04687500000 seconds
-
-Size 256x256:
-  Time taken = 0.68750000000 seconds
-
-Size 512x512:
-  Time taken = 6.75000000000 seconds
-
-Size 1024x1024:
-  Time taken = 66.54687500000 seconds
-  
-
-'''
+  # Calculate elapsed time
+  elapsed_time_s = end_time - start_time 
+  #Print results
+  print(f"Size {1024}x{1024}:")
+  print(f"  Time taken = {elapsed_time_s:.9f} seconds")
+  print()
