@@ -1,0 +1,10 @@
+0.005354
+./a.out  0.01s user 0.00s system 1% cpu 0.957 total
+0.030016
+./a.out  0.04s user 0.00s system 11% cpu 0.375 total
+0.178672
+./a.out  0.21s user 0.00s system 37% cpu 0.564 total
+1.40492
+./a.out  1.48s user 0.00s system 79% cpu 1.880 total
+10.4468
+./a.out  10.67s user 0.01s system 96% cpu 11.073 total
